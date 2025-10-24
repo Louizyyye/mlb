@@ -1,247 +1,237 @@
-/*! HTML5 Boilerplate v9.0.1 | MIT License | https://html5boilerplate.com/ */
+/* ================================================================
+   Mpita Medical: Zodiac-Themed Monthly Styles (v1.0)
+   ================================================================= */
 
-/* main.css 3.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
-/*
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
-
-/* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
-
-html {
-  color: #222;
-  font-size: 1em;
-  line-height: 1.4;
+/* Root defaults */
+:root {
+  --primary-color: #004a7c;
+  --secondary-color: #c7e2f0;
+  --accent-color: #1b8bca;
+  --background-color: #f8f9fa;
+  --text-color: #222;
+  --header-bg: var(--primary-color);
+  --footer-bg: #0c2433;
 }
 
-/*
- * Remove text-shadow in selection highlight:
- * https://twitter.com/miketaylr/status/12228805301
- *
- * Customize the background color to match your design.
- */
-
-::-moz-selection {
-  background: #b3d4fc;
-  text-shadow: none;
-}
-
-::selection {
-  background: #b3d4fc;
-  text-shadow: none;
-}
-
-/*
- * A better looking default horizontal rule
- */
-
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
-}
-
-/*
- * Remove the gap between audio, canvas, iframes,
- * images, videos and the bottom of their containers:
- * https://github.com/h5bp/html5-boilerplate/issues/440
- */
-
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-  vertical-align: middle;
-}
-
-/*
- * Remove default fieldset styles.
- */
-
-fieldset {
-  border: 0;
+/* Typography */
+body {
+  font-family: "Inter", "Segoe UI", sans-serif;
   margin: 0;
-  padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 1s ease, color 1s ease;
 }
 
-/*
- * Allow only vertical resizing of textareas.
- */
-
-textarea {
-  resize: vertical;
+/* Navigation */
+.navbar {
+  background-color: var(--header-bg);
+  color: #fff;
+  padding: 1em 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
-
-/* ==========================================================================
-   Helper classes
-   ========================================================================== */
-
-/*
- * Hide visually and from screen readers
- */
-
-.hidden,
-[hidden] {
-  display: none !important;
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 0.75em;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
-/*
- * Hide only visually, but have it available for screen readers:
- * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
- *
- * 1. For long content, line feeds are not interpreted as spaces and small width
- *    causes content to wrap 1 word per line:
- *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
- */
-
-.visually-hidden {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  /* 1 */
+.navbar a:hover,
+.navbar a.active {
+  color: var(--accent-color);
 }
 
-/*
- * Extends the .visually-hidden class to allow the element
- * to be focusable when navigated to via the keyboard:
- * https://www.drupal.org/node/897638
- */
-
-.visually-hidden.focusable:active,
-.visually-hidden.focusable:focus {
-  clip: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  position: static;
-  white-space: inherit;
-  width: auto;
+/* Hero */
+.hero {
+  background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+  color: #fff;
+  text-align: center;
+  padding: 6em 1em;
 }
 
-/*
- * Hide visually and from screen readers, but maintain layout
- */
-
-.invisible {
-  visibility: hidden;
+.hero h1 {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
 }
 
-/*
- * Clearfix: contain floats
- *
- * The use of `table` rather than `block` is only necessary if using
- * `::before` to contain the top-margins of child elements.
- */
-
-.clearfix::before,
-.clearfix::after {
-  content: "";
-  display: table;
+.hero p {
+  font-size: 1.2em;
+  margin-bottom: 1.5em;
 }
 
-.clearfix::after {
-  clear: both;
+.btn-primary {
+  background: #fff;
+  color: var(--primary-color);
+  padding: 0.8em 1.5em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 600;
 }
 
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-  /* Style adjustments for viewports that meet the condition */
+.btn-primary:hover {
+  background: var(--accent-color);
+  color: #fff;
 }
 
-@media print,
-  (-webkit-min-device-pixel-ratio: 1.25),
-  (min-resolution: 1.25dppx),
-  (min-resolution: 120dpi) {
-  /* Style adjustments for high resolution devices */
+/* Services */
+.services-highlight {
+  padding: 4em 1em;
+  text-align: center;
 }
 
-/* ==========================================================================
-   Print styles.
-   Inlined to avoid the additional HTTP request:
-   https://www.phpied.com/delay-loading-your-print-css/
-   ========================================================================== */
-
-@media print {
-  *,
-  *::before,
-  *::after {
-    background: #fff !important;
-    color: #000 !important;
-    /* Black prints faster */
-    box-shadow: none !important;
-    text-shadow: none !important;
-  }
-
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
-
-  a[href]::after {
-    content: " (" attr(href) ")";
-  }
-
-  abbr[title]::after {
-    content: " (" attr(title) ")";
-  }
-
-  /*
-   * Don't show links that are fragment identifiers,
-   * or use the `javascript:` pseudo protocol
-   */
-  a[href^="#"]::after,
-  a[href^="javascript:"]::after {
-    content: "";
-  }
-
-  pre {
-    white-space: pre-wrap !important;
-  }
-
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
-  }
-
-  tr,
-  img {
-    page-break-inside: avoid;
-  }
-
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
-
-  h2,
-  h3 {
-    page-break-after: avoid;
-  }
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2em;
+  margin-top: 2em;
 }
 
+.service-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5em;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.service-card h3 a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.service-card h3 a:hover {
+  color: var(--accent-color);
+}
+
+/* Footer */
+footer {
+  background: var(--footer-bg);
+  color: #ccc;
+  padding: 2em 1em;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5em;
+}
+
+footer a {
+  color: #c7e2f0;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--accent-color);
+}
+
+/* ================================================================
+   Zodiac Monthly Theme Variants
+   ================================================================= */
+
+/* January - Capricorn (Practical & Earthy) */
+body[data-zodiac="capricorn"] {
+  --primary-color: #2c3e50;
+  --secondary-color: #95a5a6;
+  --accent-color: #7f8c8d;
+  --footer-bg: #1b2631;
+}
+
+/* February - Aquarius (Futuristic Electric Blues) */
+body[data-zodiac="aquarius"] {
+  --primary-color: #2980b9;
+  --secondary-color: #aedff7;
+  --accent-color: #5dade2;
+  --footer-bg: #154360;
+}
+
+/* March - Pisces (Dreamy Oceanic) */
+body[data-zodiac="pisces"] {
+  --primary-color: #1b6ca8;
+  --secondary-color: #7fc8f8;
+  --accent-color: #65aedd;
+  --footer-bg: #0d3b66;
+}
+
+/* April - Aries (Bold & Fiery) */
+body[data-zodiac="aries"] {
+  --primary-color: #c0392b;
+  --secondary-color: #f5b7b1;
+  --accent-color: #e74c3c;
+  --footer-bg: #641e16;
+}
+
+/* May - Taurus (Grounded & Lush) */
+body[data-zodiac="taurus"] {
+  --primary-color: #145a32;
+  --secondary-color: #a9dfbf;
+  --accent-color: #58d68d;
+  --footer-bg: #0b3d1d;
+}
+
+/* June - Gemini (Airy & Dual) */
+body[data-zodiac="gemini"] {
+  --primary-color: #16a085;
+  --secondary-color: #a2d9ce;
+  --accent-color: #1abc9c;
+  --footer-bg: #0b5345;
+}
+
+/* July - Cancer (Soft & Reflective) */
+body[data-zodiac="cancer"] {
+  --primary-color: #34495e;
+  --secondary-color: #d6dbdf;
+  --accent-color: #85929e;
+  --footer-bg: #212f3c;
+}
+
+/* August - Leo (Regal & Radiant) */
+body[data-zodiac="leo"] {
+  --primary-color: #d4ac0d;
+  --secondary-color: #f9e79f;
+  --accent-color: #f1c40f;
+  --footer-bg: #7d6608;
+}
+
+/* September - Virgo (Clean & Analytical) */
+body[data-zodiac="virgo"] {
+  --primary-color: #196f3d;
+  --secondary-color: #a9dfbf;
+  --accent-color: #27ae60;
+  --footer-bg: #0b3d1d;
+}
+
+/* October - Libra (Balanced & Elegant) */
+body[data-zodiac="libra"] {
+  --primary-color: #884ea0;
+  --secondary-color: #d2b4de;
+  --accent-color: #bb8fce;
+  --footer-bg: #4a235a;
+}
+
+/* November - Scorpio (Mysterious & Deep) */
+body[data-zodiac="scorpio"] {
+  --primary-color: #6c3483;
+  --secondary-color: #d7bde2;
+  --accent-color: #a569bd;
+  --footer-bg: #4a235a;
+}
+
+/* December - Sagittarius (Adventurous & Bright) */
+body[data-zodiac="sagittarius"] {
+  --primary-color: #2874a6;
+  --secondary-color: #aed6f1;
+  --accent-color: #5dade2;
+  --footer-bg: #1a5276;
+}
