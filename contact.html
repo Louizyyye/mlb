@@ -46,31 +46,32 @@
 </header>
 
   <main>
-    <section class="py-20 bg-gray-50">
-  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+  <section class="contact-section">
+  <div class="contact-container">
+    <h2 class="section-title">Book Appointment or Send Inquiry</h2>
+    <p class="section-subtitle">Our team will reach out within 24 hours to confirm your appointment or respond to your inquiry.</p>
 
-    <!-- Contact Form -->
-    <div class="bg-white shadow-xl rounded-2xl p-8">
-      <h2 class="text-2xl font-bold mb-6 text-blue-700">Book an Appointment / Register</h2>
-      <form action="mailto:healthupdates@mpitamedical.shop" method="post" enctype="text/plain" class="space-y-4">
-        <div>
-          <label class="block text-gray-700 font-semibold mb-2" for="fullname">Full Name</label>
-          <input type="text" id="fullname" name="Full Name" class="w-full border-gray-300 rounded-md p-3 focus:ring-blue-500 focus:border-blue-500" placeholder="Your full name" required>
+    <form action="mailto:healthupdates@mpitamedical.shop" method="post" enctype="text/plain" class="modern-form">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="fullname">Full Name</label>
+          <input type="text" id="fullname" name="Full Name" placeholder="Your full name" required>
         </div>
 
-        <div>
-          <label class="block text-gray-700 font-semibold mb-2" for="email">Email Address</label>
-          <input type="email" id="email" name="Email" class="w-full border-gray-300 rounded-md p-3 focus:ring-blue-500 focus:border-blue-500" placeholder="example@email.com" required>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="Email" placeholder="example@email.com" required>
         </div>
 
-        <div>
-          <label class="block text-gray-700 font-semibold mb-2" for="phone">Phone Number</label>
-          <input type="tel" id="phone" name="Phone" class="w-full border-gray-300 rounded-md p-3 focus:ring-blue-500 focus:border-blue-500" placeholder="+254 700 000 000" required>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="Phone" placeholder="+254 700 000 000" required>
         </div>
 
-        <div>
-          <label class="block text-gray-700 font-semibold mb-2" for="service">Select Service</label>
-          <select id="service" name="Service" class="w-full border-gray-300 rounded-md p-3 focus:ring-blue-500 focus:border-blue-500">
+        <div class="form-group">
+          <label for="service">Select Service</label>
+          <select id="service" name="Service" required>
+            <option value="">-- Choose a Service --</option>
             <option>General Checkup</option>
             <option>Lab Diagnostics</option>
             <option>Research Consultation</option>
@@ -78,72 +79,94 @@
           </select>
         </div>
 
-        <div>
-          <label class="block text-gray-700 font-semibold mb-2" for="date">Preferred Appointment Date</label>
-          <input type="date" id="date" name="Appointment Date" class="w-full border-gray-300 rounded-md p-3 focus:ring-blue-500 focus:border-blue-500">
+        <div class="form-group">
+          <label for="date">Preferred Appointment Date</label>
+          <input type="date" id="date" name="Appointment Date">
         </div>
 
-        <div>
-          <label class="block text-gray-700 font-semibold mb-2" for="message">Additional Notes</label>
-          <textarea id="message" name="Message" rows="4" class="w-full border-gray-300 rounded-md p-3 focus:ring-blue-500 focus:border-blue-500" placeholder="Additional information or requests..."></textarea>
+        <div class="form-group full-width">
+          <label for="message">Additional Notes</label>
+          <textarea id="message" name="Message" rows="5" placeholder="Additional information or requests..."></textarea>
         </div>
-
-        <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-md font-semibold hover:bg-blue-700 transition">Send Request</button>
-      </form>
-    </div>
-
-    <!-- Contact Info -->
-    <div>
-      <h2 class="text-2xl font-bold text-blue-700 mb-4">Get in Touch</h2>
-      <p class="text-gray-600 mb-6">For inquiries, collaborations, or feedback, feel free to contact us directly.</p>
-      <ul class="space-y-2 text-gray-700">
-        <li><i class="fas fa-envelope text-blue-600 mr-2"></i> <a href="mailto:healthupdates@mpitamedical.shop" class="hover:underline">healthupdates@mpitamedical.shop</a></li>
-        <li><i class="fas fa-phone text-blue-600 mr-2"></i> +254 111 899 800</li>
-        <li><i class="fas fa-map-marker-alt text-blue-600 mr-2"></i> Mpita Medical Labs, Kenyatta Avenue, Nairobi</li>
-      </ul>
-      <div class="mt-8">
-        <h3 class="font-semibold text-gray-700 mb-2">Business Hours</h3>
-        <ul class="text-gray-600">
-          <li>Mon–Fri: 8:00 AM – 6:00 PM</li>
-          <li>Saturday: 9:00 AM – 2:00 PM</li>
-          <li>Sunday: Closed</li>
-        </ul>
       </div>
-    </div>
 
+      <button type="submit" class="btn-primary">Send Request</button>
+    </form>
   </div>
 </section>
 
   </main>
 
-  <footer>
-    <div class="container footer-grid">
-      <div>
-        <h4>Mpita Medical</h4>
-        <p>Research-driven laboratory services focused on accurate diagnostics and scientific innovation.</p>
-      </div>
+  <!-- OUR TEAM -->
+  <section id="team" class="py-20 bg-gray-100">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-8">Meet Our Team</h2>
+      <p class="text-lg text-gray-600 mb-12">
+        Our multidisciplinary team combines scientific rigor, clinical experience, and innovation to deliver exceptional results.
+      </p>
 
-      <div>
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
+      <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition">
+          <img src="https://cdn.pixabay.com/photo/2016/03/27/19/31/doctor-1283624_1280.jpg" alt="Dr. Kamau" class="w-28 h-28 object-cover rounded-full mx-auto mb-4">
+          <h3 class="text-lg font-semibold">Luis Mateus Mpita</h3>
+          <p class="text-blue-600 text-sm mb-2">Diagnostic Radiograher</p>
+          <p class="text-gray-500 text-sm">Oversees diagnostic innovation and molecular pathology initiatives with 3+ years of experience.</p>
+        </div>
 
-      <div>
-        <h4>Connect</h4>
-        <ul class="socials">
-          <li><a href="#">Facebook</a></li>
-          <li><a href="#">LinkedIn</a></li>
-          <li><a href="#">Twitter</a></li>
-        </ul>
+        <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition">
+          <img src="https://cdn.pixabay.com/photo/2018/02/02/22/16/lab-3124113_1280.jpg" alt="Dr. Wanjiru" class="w-28 h-28 object-cover rounded-full mx-auto mb-4">
+          <h3 class="text-lg font-semibold">Fransisco Mateus Mpita</h3>
+          <p class="text-blue-600 text-sm mb-2">Director of Biomedical Research</p>
+          <p class="text-gray-500 text-sm">Expert in translational medicine and lab innovation driving our R&D excellence with 30+ years of experience.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition">
+          <img src="https://cdn.pixabay.com/photo/2019/03/14/11/34/lab-4052396_1280.jpg" alt="Dr. Otieno" class="w-28 h-28 object-cover rounded-full mx-auto mb-4">
+          <h3 class="text-lg font-semibold">Joyce Wangui</h3>
+          <p class="text-blue-600 text-sm mb-2">Medical records</p>
+          <p class="text-gray-500 text-sm">Ensures diagnostic accuracy data collection and quality control across all research operations.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition">
+          <img src="https://cdn.pixabay.com/photo/2016/11/29/04/17/people-1868750_1280.jpg" alt="Sarah Mwende" class="w-28 h-28 object-cover rounded-full mx-auto mb-4">
+          <h3 class="text-lg font-semibold">Nancy Mwangi </h3>
+          <p class="text-blue-600 text-sm mb-2">Lead psychologist </p>
+          <p class="text-gray-500 text-sm">Heads philosophy and ethics development , ensuring high research standards.</p>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2025 Mpita Medical Limited. All Rights Reserved.</p>
+  </section>
+
+  <footer class="bg-gray-900 text-gray-300 py-10">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-white text-xl font-semibold mb-3">Mpita Medical</h3>
+        <p>Specialized Laboratory Services for Research and Clinical Innovation.</p>
+      </div>
+
+      <div>
+        <h4 class="text-white font-semibold mb-3">Quick Links</h4>
+        <ul class="space-y-2">
+          <li><a href="services.html" class="hover:text-white">Our Services</a></li>
+          <li><a href="about.html" class="hover:text-white">About Us</a></li>
+          <li><a href="team.html" class="hover:text-white">Our Team</a></li>
+          <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-white font-semibold mb-3">Contact Us</h4>
+        <p><i class="fas fa-envelope mr-2"></i> healthupdates@mpitamedical.shop</p>
+        <p><i class="fas fa-phone mr-2"></i> +254 111899800</p>
+        <div class="flex space-x-4 mt-4">
+          <a href="#" class="hover:text-white"><i class="fab fa-linkedin"></i></a>
+          <a href="#" class="hover:text-white"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="hover:text-white"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-gray-500 mt-10 border-t border-gray-700 pt-4 text-sm">
+      © 2025 Mpita Medical Laboratory. All rights reserved.
     </div>
   </footer>
 
