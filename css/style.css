@@ -47,7 +47,7 @@ body {
 }
 
 /* Hero */
-.hero {
+.hero-bg {
   background: linear-gradient(120deg, #5c4033, #8b5e3c); /* rich brown gradient */
   color: #fff;
   text-align: center;
