@@ -49,6 +49,8 @@ body {
 /* Hero */
 .hero-bg {
   background: linear-gradient(120deg, #5c4033, #8b5e3c); /* rich brown gradient */
+  background-size: cover;
+  background-position: center; 
   color: #fff;
   text-align: center;
   padding: 6em 1em;
