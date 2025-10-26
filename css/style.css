@@ -1,15 +1,15 @@
 /* ================================================================
-   Mpita Medical: Zodiac-Themed Monthly Styles (v1.0)
-   ================================================================= */
+   Mpita Medical: Zodiac-Themed Monthly Styles (v1.1)
+   Fixed & Optimized for GitHub Pages
+   ================================================================ */
 
 /* Root defaults */
 :root {
-  --primary-color: #00;
-  --secondary-color: #c7;
+  --primary-color: #5c4033;
+  --secondary-color: #8b5e3c;
   --accent-color: #1b8bca;
-  --background-color: #f8
-  ;
-  --text-color: #222;
+  --background-color: #f8f8f8;
+  --text-color: #222222;
   --header-bg: var(--primary-color);
   --footer-bg: #0c2433;
 }
@@ -155,9 +155,9 @@ footer a:hover {
 
 /* ================================================================
    Zodiac Monthly Theme Variants
-   ================================================================= */
+   ================================================================ */
 
-/* January - Capricorn (Practical & Earthy) */
+/* January - Capricorn */
 body[data-zodiac="capricorn"] {
   --primary-color: #2c3e50;
   --secondary-color: #95a5a6;
@@ -165,7 +165,7 @@ body[data-zodiac="capricorn"] {
   --footer-bg: #1b2631;
 }
 
-/* February - Aquarius (Futuristic Electric Blues) */
+/* February - Aquarius */
 body[data-zodiac="aquarius"] {
   --primary-color: #2980b9;
   --secondary-color: #aedff7;
@@ -173,7 +173,7 @@ body[data-zodiac="aquarius"] {
   --footer-bg: #154360;
 }
 
-/* March - Pisces (Dreamy Oceanic) */
+/* March - Pisces */
 body[data-zodiac="pisces"] {
   --primary-color: #1b6ca8;
   --secondary-color: #7fc8f8;
@@ -181,7 +181,7 @@ body[data-zodiac="pisces"] {
   --footer-bg: #0d3b66;
 }
 
-/* April - Aries (Bold & Fiery) */
+/* April - Aries */
 body[data-zodiac="aries"] {
   --primary-color: #c0392b;
   --secondary-color: #f5b7b1;
@@ -189,7 +189,7 @@ body[data-zodiac="aries"] {
   --footer-bg: #641e16;
 }
 
-/* May - Taurus (Grounded & Lush) */
+/* May - Taurus */
 body[data-zodiac="taurus"] {
   --primary-color: #145a32;
   --secondary-color: #a9dfbf;
@@ -197,7 +197,7 @@ body[data-zodiac="taurus"] {
   --footer-bg: #0b3d1d;
 }
 
-/* June - Gemini (Airy & Dual) */
+/* June - Gemini */
 body[data-zodiac="gemini"] {
   --primary-color: #16a085;
   --secondary-color: #a2d9ce;
@@ -205,7 +205,7 @@ body[data-zodiac="gemini"] {
   --footer-bg: #0b5345;
 }
 
-/* July - Cancer (Soft & Reflective) */
+/* July - Cancer */
 body[data-zodiac="cancer"] {
   --primary-color: #34495e;
   --secondary-color: #d6dbdf;
@@ -213,7 +213,7 @@ body[data-zodiac="cancer"] {
   --footer-bg: #212f3c;
 }
 
-/* August - Leo (Regal & Radiant) */
+/* August - Leo */
 body[data-zodiac="leo"] {
   --primary-color: #d4ac0d;
   --secondary-color: #f9e79f;
@@ -221,7 +221,7 @@ body[data-zodiac="leo"] {
   --footer-bg: #7d6608;
 }
 
-/* September - Virgo (Clean & Analytical) */
+/* September - Virgo */
 body[data-zodiac="virgo"] {
   --primary-color: #196f3d;
   --secondary-color: #a9dfbf;
@@ -229,7 +229,7 @@ body[data-zodiac="virgo"] {
   --footer-bg: #0b3d1d;
 }
 
-/* October - Libra (Balanced & Elegant) */
+/* October - Libra */
 body[data-zodiac="libra"] {
   --primary-color: #884ea0;
   --secondary-color: #d2b4de;
@@ -237,7 +237,7 @@ body[data-zodiac="libra"] {
   --footer-bg: #4a235a;
 }
 
-/* November - Scorpio (Mysterious & Deep) */
+/* November - Scorpio */
 body[data-zodiac="scorpio"] {
   --primary-color: #6c3483;
   --secondary-color: #d7bde2;
@@ -245,7 +245,7 @@ body[data-zodiac="scorpio"] {
   --footer-bg: #4a235a;
 }
 
-/* December - Sagittarius (Adventurous & Bright) */
+/* December - Sagittarius */
 body[data-zodiac="sagittarius"] {
   --primary-color: #2874a6;
   --secondary-color: #aed6f1;
@@ -265,7 +265,7 @@ body[data-zodiac="sagittarius"] {
   border-radius: 50%;
   text-align: center;
   font-size: 28px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -283,10 +283,10 @@ body[data-zodiac="sagittarius"] {
   height: 32px;
   filter: brightness(0) invert(1);
 }
-/* ================================
-   Modern Contact Form Styling
-   ================================ */
 
+/* ================================================================
+   Modern Contact Form Styling
+   ================================================================ */
 .contact-section-modern {
   background: linear-gradient(135deg, #f9fafb, #f0f4ff);
   padding: 5rem 1.5rem;
