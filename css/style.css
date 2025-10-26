@@ -5,9 +5,10 @@
 /* Root defaults */
 :root {
   --primary-color: #00;
-  --secondary-color: #c7e2f0;
+  --secondary-color: #c7;
   --accent-color: #1b8bca;
-  --background-color: #f8f9fa;
+  --background-color: #f8
+  ;
   --text-color: #222;
   --header-bg: var(--primary-color);
   --footer-bg: #0c2433;
