@@ -48,36 +48,52 @@ body {
 
 /* Hero */
 .hero {
-  background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(120deg, #5c4033, #8b5e3c); /* rich brown gradient */
   color: #fff;
   text-align: center;
   padding: 6em 1em;
+  border-bottom: 4px solid #d4a373; /* subtle gold-brown accent line */
 }
 
+/* Hero Text */
 .hero h1 {
-  font-size: 2.5em;
+  font-size: 3em;
+  font-weight: 800;
+  letter-spacing: 1px;
   margin-bottom: 0.5em;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 .hero p {
-  font-size: 1.2em;
+  font-size: 1.25em;
   margin-bottom: 1.5em;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #f8f3ed;
+  line-height: 1.6;
 }
 
+/* Button */
 .btn-primary {
-  background: #fff;
-  color: var(--primary-color);
-  padding: 0.8em 1.5em;
+  background: #f8f3ed;
+  color: #5c4033;
+  padding: 0.9em 1.8em;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 1.05em;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
 .btn-primary:hover {
-  background: var(--accent-color);
+  background: #d4a373;
   color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
 }
 
 /* Services */
