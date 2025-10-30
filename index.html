@@ -30,6 +30,13 @@
 
   <!-- Custom Styles -->
   <link rel="stylesheet" href="css/style.css">
+  <!-- Leaflet CSS -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-sA+rqG5w5zYkGyr6MLg4J8RaJ9RbH0s8gwPzYp9u+0k="
+  crossorigin=""
+/>
 </head>
 <!-- WhatsApp Floating Button -->
 <a href="https://wa.me/254111899800?text=Hello%20Mpita%20Medical%20Team!%20I%20would%20like%20to%20book%20an%20appointment."
@@ -166,6 +173,46 @@
     </div>
   </section>
 
+<!-- DISCOVER NEARBY SECTION (Overpass API + Slider) -->
+<section id="discover" class="py-20 bg-white border-t border-gray-200">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-4xl font-bold mb-4 text-blue-700">Discover Nearby Healthcare Facilities</h2>
+    <p class="text-gray-600 mb-8">
+      Find chemists, laboratories, clinics, or hospitals near you — customizable radius, open data, no tracking.
+    </p>
+
+    <!-- Search Controls -->
+    <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6">
+      <select id="placeType" class="border border-gray-300 rounded-md px-4 py-3 focus:ring-2 focus:ring-blue-500">
+        <option value="pharmacy">Chemist</option>
+        <option value="laboratory">Laboratory</option>
+        <option value="clinic">Clinic</option>
+        <option value="hospital">Hospital</option>
+      </select>
+
+      <!-- Radius Slider -->
+      <div class="flex items-center gap-2">
+        <label for="radius" class="text-sm font-medium text-gray-700">Radius:</label>
+        <input type="range" id="radius" min="1" max="15" value="5" step="1" class="cursor-pointer">
+        <span id="radiusValue" class="text-sm text-blue-700 font-semibold">5 km</span>
+      </div>
+
+      <button id="discoverBtn" class="bg-blue-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-700">
+        Discover Nearby
+      </button>
+    </div>
+
+    <!-- Status -->
+    <p id="statusMsg" class="text-sm text-gray-500 mb-6"></p>
+
+    <!-- Results Grid -->
+    <div id="results" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+    <!-- Map Container -->
+    <div id="map" class="hidden mt-10 h-96 rounded-xl shadow-md"></div>
+  </div>
+</section>
+  
   <!-- FOOTER -->
   <footer class="bg-gray-900 text-gray-300 py-10">
     <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
@@ -201,6 +248,147 @@
   </footer>
 
   <!-- Scripts -->
+!-- Leaflet JS -->
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-o9N1jDwied7mT2zGIMpQ+5nLz9sF9tG5S3kZ1C8Q0C4="
+  crossorigin=""
+></script>
+
+<script>
+// DOM references
+const discoverBtn = document.getElementById('discoverBtn');
+const resultsDiv = document.getElementById('results');
+const statusMsg = document.getElementById('statusMsg');
+const mapDiv = document.getElementById('map');
+const radiusSlider = document.getElementById('radius');
+const radiusValue = document.getElementById('radiusValue');
+
+let map, userMarker;
+
+// Update radius label
+radiusSlider.addEventListener('input', () => {
+  radiusValue.textContent = radiusSlider.value + " km";
+});
+
+// Click discover
+discoverBtn.addEventListener('click', () => {
+  resultsDiv.innerHTML = "";
+  statusMsg.textContent = "Detecting your location...";
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(success, error);
+  } else {
+    statusMsg.textContent = "Geolocation not supported by your browser.";
+  }
+});
+
+function success(position) {
+  const lat = position.coords.latitude;
+  const lon = position.coords.longitude;
+  const type = document.getElementById('placeType').value;
+  const radius = parseInt(radiusSlider.value) * 1000; // meters
+
+  statusMsg.textContent = `Searching for nearby ${type}s within ${radius / 1000} km...`;
+
+  // Initialize map
+  mapDiv.classList.remove('hidden');
+  if (!map) {
+    map = L.map('map').setView([lat, lon], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+    }).addTo(map);
+  } else {
+    map.setView([lat, lon], 13);
+  }
+
+  // Mark user position
+  if (userMarker) map.removeLayer(userMarker);
+  userMarker = L.marker([lat, lon])
+    .addTo(map)
+    .bindPopup("You are here")
+    .openPopup();
+
+  fetchOverpass(lat, lon, radius, type);
+}
+
+// Overpass API Query
+function fetchOverpass(lat, lon, radius, type) {
+  const query = `
+    [out:json];
+    (
+      node["amenity"="${type}"](around:${radius},${lat},${lon});
+      way["amenity"="${type}"](around:${radius},${lat},${lon});
+      relation["amenity"="${type}"](around:${radius},${lat},${lon});
+    );
+    out center;
+  `;
+
+  fetch("https://overpass-api.de/api/interpreter", {
+    method: "POST",
+    body: query
+  })
+    .then(res => res.json())
+    .then(data => displayResults(data, lat, lon, type))
+    .catch(() => statusMsg.textContent = "Error fetching data from Overpass API.");
+}
+
+// Display results
+function displayResults(data, userLat, userLon, type) {
+  resultsDiv.innerHTML = "";
+  if (!data.elements || data.elements.length === 0) {
+    statusMsg.textContent = `No ${type}s found nearby.`;
+    return;
+  }
+
+  statusMsg.textContent = `Found ${data.elements.length} nearby ${type}${data.elements.length > 1 ? "s" : ""}.`;
+
+  data.elements.forEach(el => {
+    const name = el.tags.name || "Unnamed location";
+    const address = el.tags["addr:street"] || el.tags["addr:full"] || "Address not available";
+    const phone = el.tags.phone || el.tags["contact:phone"] || "";
+    const lat = el.lat || (el.center && el.center.lat);
+    const lon = el.lon || (el.center && el.center.lon);
+    const dist = haversine(userLat, userLon, lat, lon);
+
+    // Card
+    const card = document.createElement('div');
+    card.className = "bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg transition";
+    card.innerHTML = `
+      <h3 class="font-semibold text-lg text-blue-700 mb-1">${name}</h3>
+      <p class="text-gray-600 text-sm mb-1">${address}</p>
+      <p class="text-xs text-gray-500 mb-1">Approx. ${dist.toFixed(1)} km away</p>
+      ${phone ? `<p class="text-xs text-gray-500 mb-1">📞 ${phone}</p>` : ""}
+      <a href="https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=17/${lat}/${lon}"
+         target="_blank"
+         class="text-blue-600 text-sm font-semibold hover:underline">
+         View on Map →
+      </a>
+    `;
+    resultsDiv.appendChild(card);
+
+    // Marker
+    L.marker([lat, lon])
+      .addTo(map)
+      .bindPopup(`<b>${name}</b><br>${address}<br>${dist.toFixed(1)} km away`);
+  });
+}
+
+// Distance in km
+function haversine(lat1, lon1, lat2, lon2) {
+  const R = 6371;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = Math.sin(dLat / 2) ** 2 +
+            Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+            Math.sin(dLon / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+function error() {
+  statusMsg.textContent = "Unable to access your location.";
+}
+</script>
   <script src="js/app.js"></script>
 
 </body>
